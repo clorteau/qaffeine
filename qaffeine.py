@@ -1,43 +1,39 @@
 #
-# qaffeine - prevent inactivity on your computer by simulating key presses
+# qaffeine - prevent inactivity on your computer by simulating key events
 #
 # Clem Lorteau - 2019-05-26
 
 import sys
+import os
 import argparse
+import pyautogui
 from threading import Thread, Event
-from PySide2.QtCore import QCoreApplication, QEvent, Qt
-from PySide2.QtGui import QKeyEvent
-from PySide2.QtWidgets import QMainWindow, QApplication
 
 class KeyPressesSender(Thread):
-    def __init__(self, event):
+    def __init__(self, event, key = 'altright'):
         Thread.__init__(self)
-        self.stopped = event
-        self.invisible = QMainWindow()
+        self.key = key
+        self.stopped = event    
     
     def run(self):
-        while not self.stopped.wait(0.5):
-            print('Send')
-            sendEvent = QKeyEvent(QEvent.KeyPress, Qt.Key_F15, Qt.NoModifier)
-            QCoreApplication.postEvent(self.invisible, sendEvent)
-            self.stopped.wait(0.1)
-            sendEvent = QKeyEvent(QEvent.KeyRelease, Qt.Key_F15, Qt.NoModifier)
-            QCoreApplication.postEvent(self.invisible, sendEvent)
+        while not self.stopped.wait(5):
+            pyautogui.press(self.key)
 
 if __name__ == '__main__':
-    ap = argparse.ArgumentParser('Prevent computer inactivity')
-    ap.add_argument('-n','--nogui', help='Don\'t start a GUI, only a operate in text mode', action='store_true')
+    ap = argparse.ArgumentParser('Prevent computer inactivity by simulating key presses')
+    ap.add_argument('-n','--nogui', action='store_true', help='Don\'t start a GUI, only a operate in text mode')
+    ap.add_argument('-k', '--key', default = 'altright', help='Key to press [default: altright]; see keys.txt for a list of valid values')
     args = ap.parse_args()
 
     if args.nogui:
-        app = QApplication(sys.argv) #JUST FOR TEST
         stopFlag = Event()
-        thread = KeyPressesSender(stopFlag)
-        thread.start()
+        thread = KeyPressesSender(stopFlag, args.key)
 
-        sys.exit(app.exec_()) #JUST FOR TEST
-        #sys.exit(0)
+        thread.start()
+        input('Preventing inactivity; press <Enter> to stop...')
+        stopFlag.set()
+
+        sys.exit(0)
     
     else:
         pass

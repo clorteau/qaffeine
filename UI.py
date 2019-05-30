@@ -32,8 +32,8 @@ class UI():
         if (self.settings.value('delay')):
             self.delay = self.settings.value('delay')
         else:
-            self.delay = 5
-        self.mainDialog.delaySpinBox.setValue(self.delay)
+            self.delay = '5'
+        self.mainDialog.delaySpinBox.setValue(int(self.delay))
 
         if (self.settings.value('key')):
             self.key = self.settings.value('key')
@@ -110,7 +110,7 @@ class UI():
             self.systray.setIcon(QIcon(path + '/' + 'res/icon_' + self.iconTheme + '_on.png'))
             self.stopFlag.clear()
             self.thread.key = self.key
-            self.thread.delay = self.delay
+            self.thread.delay = int(self.delay)
             self.thread.start()
             self.activateAction.setText('St&op')
         else: 

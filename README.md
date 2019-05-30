@@ -35,4 +35,5 @@ optional arguments:
 Running 'python qaffeine.py' without any argument starts the graphical interface. Qaffeine then runs in the notification area.
 
 ![Screenshot](http://www.lorteau.fr/images/qaffeine_tray.png)
+
 ![Screenshot](http://www.lorteau.fr/images/qaffeine_settings.png)

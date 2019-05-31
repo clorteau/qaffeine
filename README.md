@@ -29,7 +29,7 @@ This will pull the dependencies automatically.
 
 Syntax:
 ```
-$ python3 qaffeine.py -h
+$ qaffeine-cli -h
 usage: Prevent computer inactivity by simulating key presses
        [-h] [-n] [-d DELAY] [-k KEY] [-v]
 
@@ -46,7 +46,7 @@ optional arguments:
 
 ### GUI
 
-Running 'python qaffeine.py' without any argument starts the graphical interface. Qaffeine then runs in the notification area.
+Running qaffeine without any argument starts the graphical interface. Qaffeine then runs in the notification area.
 
 ![Screenshot](http://www.lorteau.fr/images/qaffeine_tray.png)
 

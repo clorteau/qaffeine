@@ -8,8 +8,8 @@ from PySide2.QtUiTools import QUiLoader
 from PySide2.QtCore import QFile, Qt, SIGNAL
 from PySide2.QtWidgets import QDialog, QMessageBox
 from PySide2.QtGui import QIcon
-from KeyPressesSender import keys
-import __init__
+from src.KeyPressesSender import keys
+from src.__init__ import __version__
 
 path = os.path.dirname(os.path.realpath(__file__))
 
@@ -19,7 +19,7 @@ class MainDialog():
     
     @staticmethod
     def create():
-        uifilename = 'maindialog.ui'
+        uifilename = path + '/res/maindialog.ui'
         uifile = QFile(os.path.join(path, uifilename))
         uifile.open(QFile.ReadOnly)
         loader = QUiLoader()
@@ -39,7 +39,7 @@ class MainDialog():
     @staticmethod
     def showAbout():
         if MainDialog.ui != None:
-            text ='<b>qaffeine v' + __init__.__version__ + '</b><br/><br/>' + \
+            text ='<b>qaffeine v' + __version__ + '</b><br/><br/>' + \
                   'Prevent inactivity by simulating key presses<br/><br/>' + \
                   '<i>Clem Lorteau 2019 - https://github.com/clorteau/qaffeine</i>'
             QMessageBox.about(MainDialog.ui, 'About qaffeine', text)

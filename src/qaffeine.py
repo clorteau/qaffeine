@@ -1,17 +1,20 @@
 #
 # qaffeine - prevent inactivity on your computer by simulating key events
 #
-# Clem Lorteau - 2019-05-26
+# Clem Lorteau - 2019-05-31
 
 import sys
 import os
 import argparse
 from threading import Event
-from UI import UI
-from KeyPressesSender import KeyPressesSender
-import __init__
+from src.UI import UI
+from src.KeyPressesSender import KeyPressesSender
+from src.__init__ import __version__
 
-if __name__ == '__main__':
+def gui():
+    UI().start()
+    
+def cli():
     ap = argparse.ArgumentParser('Prevent computer inactivity by simulating key presses')
     ap.add_argument('-n','--nogui', action='store_true', help='Don\'t start a GUI, only a operate in text mode')
     ap.add_argument('-d', '--delay', type=int, default = 5, help='Delay between key presses in seconds [default: 5] - only valid with --nogui')
@@ -20,7 +23,7 @@ if __name__ == '__main__':
     args = ap.parse_args()
 
     if args.version:
-        print(__init__.__version__)
+        print(__version__)
         sys.exit(0)
 
     if args.nogui:
@@ -34,7 +37,10 @@ if __name__ == '__main__':
         sys.exit(0)
     
     else:
-        UI().start()
+        gui()
+
+if __name__ == '__main__':
+    cli()
 
         
     

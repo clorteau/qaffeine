@@ -10,23 +10,26 @@ Compatible with Linux, OS/X and Windows.
 - PySide2
 - pyautogui
 
-## Usage
-
 ## Installation
 ### Using PIP
 
 ```
-#pip install qaffeine
+#pip3 install qaffeine
 ```
 
-### Manually
-Download this source and run qaffeine.py with Python 3.
+This will pull the dependencies automatically.
 
+### Using the setup.py supplied in the source tree
+```
+#python3 setup.py install
+```
+
+## Usage
 ### Command line
 
 Syntax:
 ```
-$ python qaffeine.py -h
+$ python3 qaffeine.py -h
 usage: Prevent computer inactivity by simulating key presses
        [-h] [-n] [-d DELAY] [-k KEY] [-v]
 

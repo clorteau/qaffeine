@@ -8,9 +8,9 @@ import os
 from PySide2.QtWidgets import QApplication, QSystemTrayIcon, QMessageBox, QMenu, QAction, QToolTip
 from PySide2.QtGui import QIcon, QCursor
 from PySide2.QtCore import SIGNAL, Qt, QSettings
-from MainDialog import MainDialog
+from src.MainDialog import MainDialog
 from threading import Event
-from KeyPressesSender import KeyPressesSender
+from src.KeyPressesSender import KeyPressesSender
 
 path = os.path.dirname(os.path.realpath(__file__))
 

@@ -21,6 +21,7 @@ setuptools.setup(
     url = 'https://github.com/clorteau/qaffeine',
     python_requires = '>=3',
     packages = setuptools.find_packages(),
+    license = 'Unlicense',
     install_requires = [
         'PySide2',
         'autogui',

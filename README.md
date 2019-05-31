@@ -11,6 +11,17 @@ Compatible with Linux, OS/X and Windows.
 - pyautogui
 
 ## Usage
+
+## Installation
+### Using PIP
+
+```
+#pip install qaffeine
+```
+
+### Manually
+Download this source and run qaffeine.py with Python 3.
+
 ### Command line
 
 Syntax:
